@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comic Creator Web App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      text-align: center;
+      color: #333;
+      padding: 20px;
+      font-size: 24px;
+      width: 100%;
+    }
+
+    #main-container {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    #comic-form {
+      width: 45%;
+      max-width: 400px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 20px 0;
+      overflow-y: auto;
+    }
+
+    #comic-form h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    #comic-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    #comic-form textarea {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    #comic-form button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #comic-form button:hover {
+      background-color: #45a049;
+    }
+
+    #comic-display {
+      width: 45%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+
+    .comic-panel {
+      width: 45%;
+      margin: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .comic-panel img {
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* Responsive Styles */
+    @media only screen and (max-width: 900px) {
+      #main-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #comic-form,
+      #comic-display {
+        width: 90%;
+        margin: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Comic Creator Web App</header>
+
+  <div id="main-container">
+    <div id="comic-form">
+      <h2>Please enter your responses</h2>
+      <form id="text-form">
+        <!-- Panel 1 -->
+        <label for="panel1">Panel 1:</label>
+        <textarea id="panel1" rows="4" placeholder="Enter text for Panel 1"></textarea>
+        <textarea id="panel2" rows="4" placeholder="Enter text for Panel 2"></textarea>
+        <textarea id="panel3" rows="4" placeholder="Enter text for Panel 3"></textarea>
+        <textarea id="panel4" rows="4" placeholder="Enter text for Panel 4"></textarea>
+        <textarea id="panel5" rows="4" placeholder="Enter text for Panel 5"></textarea>
+        <textarea id="panel6" rows="4" placeholder="Enter text for Panel 6"></textarea>
+        <textarea id="panel7" rows="4" placeholder="Enter text for Panel 7"></textarea>
+        <textarea id="panel8" rows="4" placeholder="Enter text for Panel 8"></textarea>
+        <textarea id="panel9" rows="4" placeholder="Enter text for Panel 9"></textarea>
+        <textarea id="panel10" rows="4" placeholder="Enter text for Panel 10"></textarea>
+
+        <button type="button" onclick="generateComic()">Generate Comic</button>
+      </form>
+    </div>
+
+    <div id="comic-display"></div>
+  </div>
+
+  <script>
+    const comicDisplay = document.getElementById('comic-display');
+
+    function generateComic() {
+      // Mock API call using Lorem Picsum for image generation
+      comicDisplay.innerHTML = ''; // Clear previous content
+
+      for (let i = 1; i <= 10; i++) {
+        const panelText = document.getElementById(`panel${i}`).value;
+        const imageUrl = `https://picsum.photos/300/200?random=${i}`;
+
+        const panelDiv = document.createElement('div');
+        panelDiv.className = 'comic-panel';
+
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = `Panel ${i}`;
+        panelDiv.appendChild(img);
+
+        const textDiv = document.createElement('div');
+        textDiv.textContent = panelText;
+        panelDiv.appendChild(textDiv);
+
+        comicDisplay.appendChild(panelDiv);
+      }
+    }
+  </script>
+</body>
+</html>

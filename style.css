@@ -1,0 +1,38 @@
+body {
+    font-family: sans-serif;
+}
+
+#comic-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#comic-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#comic-display img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
